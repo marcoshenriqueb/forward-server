@@ -1,4 +1,5 @@
 const { authenticate } = require('@feathersjs/authentication').hooks;
+const { restrictToOwner } = require('feathers-authentication-hooks');
 
 const {
   hashPassword, protect
@@ -7,12 +8,12 @@ const {
 module.exports = {
   before: {
     all: [],
-    find: [ authenticate('jwt') ],
-    get: [ authenticate('jwt') ],
+    find: [ authenticate('jwt'), restrictToOwner({ idField: '_id', ownerField: '_id' }) ],
+    get: [ authenticate('jwt'), restrictToOwner({ idField: '_id', ownerField: '_id' }) ],
     create: [ hashPassword() ],
-    update: [ hashPassword(),  authenticate('jwt') ],
-    patch: [ hashPassword(),  authenticate('jwt') ],
-    remove: [ authenticate('jwt') ]
+    update: [ hashPassword(),  authenticate('jwt'), restrictToOwner({ idField: '_id', ownerField: '_id' }) ],
+    patch: [ hashPassword(),  authenticate('jwt'), restrictToOwner({ idField: '_id', ownerField: '_id' }) ],
+    remove: [ authenticate('jwt'), restrictToOwner({ idField: '_id', ownerField: '_id' }) ]
   },
 
   after: {

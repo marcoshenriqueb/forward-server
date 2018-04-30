@@ -1,0 +1,16 @@
+version: '3'
+services:
+    backend:
+        image: marcoshenriqueb/forward-server
+        environment:
+            NODE_ENV: "production"
+        ports:
+            - "3030:3030"
+    mongo:
+        image: mongo
+        volumes:
+            - ~/.mongodb:/data/db
+    nginx:
+        image: marcoshenriqueb/forward-nginx
+        ports:
+            - "80:80"

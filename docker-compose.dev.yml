@@ -1,0 +1,16 @@
+version: '3'
+services:
+    backend:
+        image: forward-server-dev
+        environment:
+            DB_URL: "3306"
+        volumes:
+            - /var/www/node/forward/:/code
+        links:
+            - mongo
+        ports:
+            - "3030:3030"
+    mongo:
+        image: mongo
+        volumes:
+            - ~/.mongodb:/data/db

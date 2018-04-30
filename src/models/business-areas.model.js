@@ -13,6 +13,7 @@ module.exports = function (app) {
       required: true
     },
     canDispatch: { type: Boolean, default: false },
+    showAddress: { type: Boolean, default: false },
   }, {
     timestamps: true
   });

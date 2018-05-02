@@ -40,6 +40,7 @@ module.exports = function (app) {
       }
     ],
     dispatched: { type: Boolean, default: false },
+    step: { type: Number, default: 0 },
   }, {
     timestamps: true
   });

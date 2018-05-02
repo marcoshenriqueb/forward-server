@@ -12,7 +12,7 @@ module.exports = function (app) {
       ref: 'businesses',
       required: true
     },
-    canDispatch: { type: Boolean, default: false },
+    step: { type: Number, required: true },
     showAddress: { type: Boolean, default: false },
     showPaymentMethods: { type: Boolean, default: false },
   }, {

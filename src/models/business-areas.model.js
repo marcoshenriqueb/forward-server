@@ -1,5 +1,5 @@
 // businessAreas-model.js - A mongoose model
-// 
+//
 // See http://mongoosejs.com/docs/models.html
 // for more of what you can do here.
 module.exports = function (app) {
@@ -12,8 +12,9 @@ module.exports = function (app) {
       ref: 'businesses',
       required: true
     },
-    canDispatch: { type: Boolean, default: false },
+    step: { type: Number, required: true },
     showAddress: { type: Boolean, default: false },
+    showPaymentMethods: { type: Boolean, default: false },
   }, {
     timestamps: true
   });

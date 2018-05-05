@@ -1,5 +1,5 @@
 // orders-model.js - A mongoose model
-// 
+//
 // See http://mongoosejs.com/docs/models.html
 // for more of what you can do here.
 module.exports = function (app) {
@@ -39,6 +39,8 @@ module.exports = function (app) {
         notes: { type: String }
       }
     ],
+    dispatched: { type: Boolean, default: false },
+    step: { type: Number, default: 0 },
   }, {
     timestamps: true
   });

@@ -7,6 +7,7 @@ module.exports = function (app) {
   const { Schema } = mongooseClient;
   const menuItems = new Schema({
     name: { type: String, required: true },
+    number: { type: Number, required: false, unique: true },
     business: {
       type: mongooseClient.Schema.Types.ObjectId,
       ref: 'businesses',

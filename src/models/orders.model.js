@@ -41,6 +41,7 @@ module.exports = function (app) {
     ],
     dispatched: { type: Boolean, default: false },
     step: { type: Number, default: 0 },
+    counterTimeStart: { type: Date, default: Date.now },
   }, {
     timestamps: true
   });

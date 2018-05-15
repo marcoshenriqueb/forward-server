@@ -32,6 +32,7 @@
   },
   "mongodb": "mongodb://mongo:27017/forward",
   "ifood": {
+    "url": "https://pos-api.ifood.com.br/",
     "client_id": "onixx8",
     "client_secret": "M^4sbzp7"
   }

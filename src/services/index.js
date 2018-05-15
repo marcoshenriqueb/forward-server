@@ -7,6 +7,7 @@ const motoboys = require('./motoboys/motoboys.service.js');
 const paymentMethods = require('./payment-methods/payment-methods.service.js');
 const menuCategories = require('./menu-categories/menu-categories.service.js');
 const ifood = require('./ifood/ifood.service.js');
+const ifoodAuth = require('./ifood-auth/ifood-auth.service.js');
 // eslint-disable-next-line no-unused-vars
 module.exports = function (app) {
   app.configure(users);
@@ -18,4 +19,5 @@ module.exports = function (app) {
   app.configure(paymentMethods);
   app.configure(menuCategories);
   app.configure(ifood);
+  app.configure(ifoodAuth);
 };

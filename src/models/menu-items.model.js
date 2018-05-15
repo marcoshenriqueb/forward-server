@@ -27,6 +27,7 @@ module.exports = function (app) {
         },
       }
     ],
+    ifoodCode: { type: Number, required: false },
   }, {
     timestamps: true
   });

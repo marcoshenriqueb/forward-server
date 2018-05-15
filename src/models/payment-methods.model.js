@@ -12,6 +12,7 @@ module.exports = function (app) {
       ref: 'businesses',
       required: true
     },
+    ifoodCode: { type: String, required: false },
   }, {
     timestamps: true
   });

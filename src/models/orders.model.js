@@ -9,12 +9,16 @@ module.exports = function (app) {
     number: { type: Number, required: true },
     address: { type: String, required: true },
     clientName: { type: String, required: true },
-    paymentMethod: {
-      type: mongooseClient.Schema.Types.ObjectId,
-      ref: 'payment-methods',
-      required: true
-    },
-    change: { type: Number, required: false },
+    paymentMethods: [
+      {
+        paymentMethod: {
+          type: mongooseClient.Schema.Types.ObjectId,
+          ref: 'payment-methods',
+          required: true
+        },
+        change: { type: Number, required: false },
+      }
+    ],
     business: {
       type: mongooseClient.Schema.Types.ObjectId,
       ref: 'businesses',

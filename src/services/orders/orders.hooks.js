@@ -1,6 +1,6 @@
 const { authenticate } = require('@feathersjs/authentication').hooks;
 const { restrictToOwner, associateCurrentUser } = require('feathers-authentication-hooks');
-const { alterItems } = require('feathers-hooks-common');
+const { populate } = require('feathers-hooks-common');
 
 module.exports = {
   before: {
@@ -9,32 +9,15 @@ module.exports = {
     get: [ restrictToOwner({ idField: 'business', ownerField: 'business' }) ],
     create: [
       associateCurrentUser({ idField: 'business', as: 'business' }),
-      alterItems((rec, context) => {
-        if (
-          !rec.paymentMethods ||
-          !rec.paymentMethods.filter(p => p.ifoodCode !== undefined).length
-        ) {
-          return rec;
-        }
-        
-        return new Promise((resolve, reject) => (
-          context.app.service('payment-methods').find({
-            query: {
-              ifoodCode: {
-                $in: rec.paymentMethods.filter(p => p.ifoodCode !== undefined).map(p => p.ifoodCode),
-              },
-            }
-          }).then((response) => {
-            rec.paymentMethods = [
-              ...rec.paymentMethods.filter(p => p.paymentMethod !== undefined),
-              ...response.data.map(p => ({ paymentMethod: p._id })),
-            ];
-
-            resolve();
-          }).catch(error => {
-            reject(error);
-          })
-        )); 
+      populate({ 
+        schema: {
+          include: {
+            service: 'payment-methods',
+            nameAs: 'paymentMethods',
+            parentFields: 'paymentMethodIfoodCodes',
+            childField: 'ifoodCode',
+          },
+        } 
       }),
     ],
     update: [ restrictToOwner({ idField: 'business', ownerField: 'business' }) ],

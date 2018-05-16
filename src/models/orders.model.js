@@ -16,9 +16,9 @@ module.exports = function (app) {
           ref: 'payment-methods',
           required: true
         },
-        change: { type: Number, required: false },
       }
     ],
+    change: { type: Number, required: false },
     business: {
       type: mongooseClient.Schema.Types.ObjectId,
       ref: 'businesses',

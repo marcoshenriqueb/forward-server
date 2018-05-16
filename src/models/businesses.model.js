@@ -7,7 +7,7 @@ module.exports = function (app) {
   const { Schema } = mongooseClient;
   const businesses = new Schema({
     name: { type: String, required: true },
-    resetHour: { type: String, default: '02:00' },
+    resetHour: { type: String, default: '03:00' },
     dispatchAlertTime: { type: Number, default: 20 },
   }, {
     timestamps: true

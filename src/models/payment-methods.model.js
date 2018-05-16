@@ -7,11 +7,6 @@ module.exports = function (app) {
   const { Schema } = mongooseClient;
   const paymentMethods = new Schema({
     name: { type: String, required: true },
-    business: {
-      type: mongooseClient.Schema.Types.ObjectId,
-      ref: 'businesses',
-      required: true
-    },
     ifoodCode: { type: String, required: false },
   }, {
     timestamps: true
